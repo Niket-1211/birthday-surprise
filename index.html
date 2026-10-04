@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Birthday Surprise ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <!-- FLOATING HEARTS & PETALS -->
+
+<div id="floatingParticles"></div>
+
+
+    <!-- =========================================
+         OPENING SCREEN
+    ========================================== -->
+
+    <div id="openingScreen">
+
+        <div class="stars"></div>
+
+        <div class="opening-content">
+
+            <div class="opening-heart">
+                ❤️
+            </div>
+
+            <h1>Rashii...</h1>
+
+            <p>
+                I made something special for you
+            </p>
+
+            <div class="opening-line"></div>
+
+            <button onclick="enterBirthday()">
+                Open My Surprise ✨
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         BACKGROUND MUSIC
+    ========================================== -->
+
+    <audio id="birthdayMusic"
+           loop
+           preload="auto">
+
+        <source
+            src="Music/birthday.mp3"
+            type="audio/mpeg">
+
+    </audio>
+
+
+    <!-- MUSIC CONTROL -->
+
+    <button id="musicButton"
+            class="music-button"
+            onclick="toggleMusic()">
+
+        🎵 Play Music
+
+    </button>
+
+
+
+    <!-- =========================================
+         FIRST SCREEN
+    ========================================== -->
+
+    <section id="welcome"
+             class="screen">
+
+        <div class="container">
+
+            <div class="heart">
+                ❤️
+            </div>
+
+            <h1>
+                Hey Beautiful ❤️
+            </h1>
+
+            <p>
+                I made something special for you...
+            </p>
+
+            <button onclick="startSurprise()">
+                Open Your Surprise 🎁
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         SECOND SCREEN
+    ========================================== -->
+
+    <section id="birthday"
+             class="screen hidden">
+
+        <div class="container">
+
+
+            <!-- BIRTHDAY MESSAGE -->
+
+            <div class="big-heart">
+                💖
+            </div>
+
+
+            <h1>
+                Happy Birthday, Rashii! 🎂
+            </h1>
+
+
+            <h2>
+                To the most beautiful person in my world ❤️
+            </h2>
+
+
+            <p class="message">
+
+                Today is your special day, Rashii,
+                but honestly, every day feels special
+                because you're in my life. ❤️
+
+            </p>
+
+
+            <button onclick="showMessage()">
+                There's More... 💌
+            </button>
+
+
+            <p id="secretMessage"
+               class="hidden message">
+
+                You mean more to me than words can explain. ❤️
+
+            </p>
+
+
+
+            <!-- =========================================
+                 PHOTO SECTION
+            ========================================== -->
+
+            <div class="photo-section">
+
+
+                <h2 class="photo-title">
+
+                    A Little Collection of Beautiful You
+                    📸❤️
+
+                </h2>
+
+
+                <p class="photo-subtitle">
+
+                    Because some smiles deserve to be
+                    remembered forever ✨
+
+                </p>
+
+
+                <div class="photo-gallery">
+
+
+                    <!-- PHOTO 1 -->
+
+                    <div class="photo-card">
+
+                        <img
+                            src="Photos/rashii1.jpg"
+                            alt="Rashii"
+                            onclick="openPhoto(this)">
+
+                    </div>
+
+
+                    <!-- PHOTO 2 -->
+
+                    <div class="photo-card">
+
+                        <img
+                            src="Photos/rashii2.jpg"
+                            alt="Rashii"
+                            onclick="openPhoto(this)">
+
+                    </div>
+
+
+                    <!-- PHOTO 3 -->
+
+                    <div class="photo-card">
+
+                        <img
+                            src="Photos/rashii3.jpg"
+                            alt="Rashii"
+                            onclick="openPhoto(this)">
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =========================================
+                 LOVE LETTER
+            ========================================== -->
+
+            <section class="love-letter">
+
+                <div class="letter-card">
+
+
+                    <div class="letter-heart">
+                        💌
+                    </div>
+
+
+                    <h2>
+                        A Little Message For You,
+                        Rashii ❤️
+                    </h2>
+
+
+                    <div id="typedLetter"
+                         class="typed-letter">
+                    </div>
+
+
+                    <button onclick="startLetter()">
+
+                        Read My Heart ❤️
+
+                    </button>
+
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         FULL SCREEN PHOTO VIEWER
+    ========================================== -->
+
+    <div id="photoViewer"
+         class="photo-viewer">
+
+
+        <span class="close-photo"
+              onclick="closePhoto()">
+
+            &times;
+
+        </span>
+
+
+        <img id="largePhoto"
+             src=""
+             alt="Rashii">
+
+
+    </div>
+
+
+
+    <!-- =========================================
+         FINAL GIFT SECTION
+    ========================================== -->
+
+    <section class="gift-section">
+
+
+        <h2>
+            One Last Surprise For You 🎁
+        </h2>
+
+
+        <p class="gift-hint">
+
+            I saved something special for the end... ❤️
+
+        </p>
+
+
+
+        <!-- GIFT BOX -->
+
+        <div class="gift-box"
+             onclick="openGift()">
+
+
+            <div class="gift-lid">
+            </div>
+
+
+            <div class="gift-body">
+
+                <div class="gift-ribbon">
+                </div>
+
+            </div>
+
+
+            <div class="gift-bow">
+                🎀
+            </div>
+
+
+        </div>
+
+
+        <p class="click-text">
+
+            Tap the gift 🎁
+
+        </p>
+
+
+
+        <!-- =========================================
+             FINAL MESSAGE
+        ========================================== -->
+
+        <div id="finalMessage"
+             class="final-message">
+
+
+            <div class="final-heart">
+                ❤️
+            </div>
+
+
+            <h1>
+                Happy Birthday, Rashii! 🎂
+            </h1>
+
+
+            <p>
+
+                You are one of the most beautiful
+                chapters of my life. ❤️
+
+            </p>
+
+
+            <p>
+
+                I hope this little surprise made
+                you smile, because seeing you happy
+                is one of my favorite things in the world. ✨
+
+            </p>
+
+
+            <h2>
+
+                Keep smiling, beautiful. ❤️
+
+            </h2>
+
+
+            <div class="final-hearts">
+
+                💕 💖 💗 💓 💞
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>

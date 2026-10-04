@@ -1,0 +1,3335 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+
+    background: linear-gradient(
+        135deg,
+        #ff758c,
+        #ff7eb3,
+        #a18cd1
+    );
+
+    color: white;
+    text-align: center;
+}
+
+.container {
+    padding: 30px;
+}
+
+.heart {
+    font-size: 80px;
+
+    animation: heartbeat 1.2s infinite;
+}
+
+h1 {
+    font-size: 45px;
+    margin: 20px 0 10px;
+}
+
+p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+button {
+    padding: 15px 30px;
+
+    border: none;
+    border-radius: 30px;
+
+    background: white;
+    color: #ff4f81;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.08);
+}
+
+@keyframes heartbeat {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+.screen {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.big-heart {
+    font-size: 100px;
+
+    animation: heartbeat 1.2s infinite;
+}
+
+h2 {
+    margin: 15px 0;
+    font-size: 25px;
+}
+
+.message {
+    max-width: 600px;
+    margin: 25px auto;
+
+    font-size: 20px;
+    line-height: 1.6;
+}
+/* PHOTO GALLERY */
+
+.photo-section {
+    margin-top: 60px;
+    padding: 20px;
+}
+
+.photo-title {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.photo-subtitle {
+    font-size: 17px;
+    opacity: 0.9;
+    margin-bottom: 30px;
+}
+
+.photo-gallery {
+    display: grid;
+
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(180px, 1fr)
+    );
+
+    gap: 20px;
+
+    max-width: 900px;
+
+    margin: auto;
+}
+
+.photo-card {
+    height: 250px;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, 0.2);
+
+    padding: 6px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.2);
+
+    transition: 0.4s;
+}
+
+.photo-card:hover {
+    transform: translateY(-10px) scale(1.03);
+}
+
+.photo-card img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 15px;
+
+    display: block;
+}
+
+/* FULL SCREEN PHOTO VIEWER */
+
+.photo-viewer {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.9);
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    visibility: hidden;
+
+    opacity: 0;
+
+    transition: 0.3s;
+
+    z-index: 9999;
+}
+
+.photo-viewer.show {
+    visibility: visible;
+
+    opacity: 1;
+}
+
+.photo-viewer img {
+    max-width: 90%;
+    max-height: 85%;
+
+    object-fit: contain;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 0 40px rgba(255, 255, 255, 0.2);
+}
+
+.close-photo {
+    position: absolute;
+
+    top: 25px;
+    right: 40px;
+
+    font-size: 50px;
+
+    color: white;
+
+    cursor: pointer;
+
+    z-index: 10000;
+
+    transition: 0.3s;
+}
+
+.close-photo:hover {
+    transform: scale(1.2);
+
+    color: #ff6b9d;
+}
+
+/* LOVE LETTER */
+
+.love-letter {
+    width: 100%;
+
+    padding: 80px 20px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.letter-card {
+    width: 90%;
+    max-width: 700px;
+
+    padding: 45px 35px;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.18);
+
+    backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.2);
+
+    text-align: center;
+}
+
+.letter-heart {
+    font-size: 70px;
+
+    margin-bottom: 20px;
+
+    animation: heartbeat 1.3s infinite;
+}
+
+.letter-card h2 {
+    font-size: 30px;
+
+    margin-bottom: 30px;
+}
+
+.typed-letter {
+    min-height: 180px;
+
+    font-size: 20px;
+
+    line-height: 1.8;
+
+    text-align: left;
+
+    margin-bottom: 30px;
+
+    white-space: pre-line;
+}
+
+.letter-card button {
+    margin-top: 10px;
+}
+
+/* =========================
+   FINAL GIFT SECTION
+========================= */
+
+.gift-section {
+    width: 100%;
+
+    min-height: 100vh;
+
+    padding: 100px 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+.gift-section h2 {
+    font-size: 35px;
+
+    margin-bottom: 10px;
+}
+
+.gift-hint {
+    font-size: 18px;
+
+    margin-bottom: 50px;
+}
+
+
+/* GIFT BOX */
+
+.gift-box {
+    position: relative;
+
+    width: 180px;
+    height: 160px;
+
+    cursor: pointer;
+
+    transition: 0.4s;
+}
+
+.gift-box:hover {
+    transform: scale(1.08);
+}
+
+
+/* BOX BODY */
+
+.gift-body {
+    position: absolute;
+
+    bottom: 0;
+
+    left: 10px;
+
+    width: 160px;
+    height: 110px;
+
+    background: #ff3f81;
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+/* BOX LID */
+
+.gift-lid {
+    position: absolute;
+
+    top: 35px;
+
+    left: 0;
+
+    width: 180px;
+    height: 35px;
+
+    background: #ff5c96;
+
+    border-radius: 6px;
+
+    z-index: 3;
+
+    transition: 0.8s;
+}
+
+
+/* RIBBON */
+
+.gift-ribbon {
+    position: absolute;
+
+    left: 65px;
+
+    width: 30px;
+    height: 110px;
+
+    background: #ffd166;
+}
+
+
+/* BOW */
+
+.gift-bow {
+    position: absolute;
+
+    top: -5px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-size: 65px;
+
+    z-index: 5;
+
+    transition: 0.8s;
+}
+
+
+/* CLICK TEXT */
+
+.click-text {
+    margin-top: 25px;
+
+    font-size: 18px;
+
+    animation: pulseText 1.5s infinite;
+}
+
+
+/* FINAL MESSAGE */
+
+.final-message {
+    display: none;
+
+    max-width: 700px;
+
+    margin-top: 70px;
+
+    padding: 45px 30px;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.18);
+
+    backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.2);
+
+    animation: finalAppear 1.2s ease;
+}
+
+.final-message.show {
+    display: block;
+}
+
+.final-heart {
+    font-size: 80px;
+
+    animation: heartbeat 1.2s infinite;
+}
+
+.final-message h1 {
+    font-size: 40px;
+
+    margin: 20px 0;
+}
+
+.final-message p {
+    font-size: 19px;
+
+    line-height: 1.7;
+
+    margin: 15px 0;
+}
+
+.final-message h2 {
+    margin-top: 25px;
+}
+
+.final-hearts {
+    font-size: 35px;
+
+    margin-top: 25px;
+
+    letter-spacing: 8px;
+}
+
+
+/* GIFT OPEN ANIMATION */
+
+.gift-box.open .gift-lid {
+    transform:
+        translateY(-80px)
+        rotate(-8deg);
+}
+
+.gift-box.open .gift-bow {
+    transform:
+        translateX(-50%)
+        translateY(-100px)
+        rotate(15deg);
+}
+
+
+/* ANIMATIONS */
+
+@keyframes pulseText {
+
+    0% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+
+}
+
+@keyframes finalAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+/* =========================
+   MOBILE RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 600px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .container {
+        width: 100%;
+        padding: 25px 18px;
+    }
+
+    /* FIRST SCREEN */
+
+    .heart {
+        font-size: 65px;
+    }
+
+    h1 {
+        font-size: 34px;
+    }
+
+    .subtitle,
+    p {
+        font-size: 17px;
+    }
+
+    button {
+        padding: 13px 24px;
+        font-size: 16px;
+    }
+
+
+    /* BIRTHDAY SECTION */
+
+    .big-heart {
+        font-size: 75px;
+    }
+
+    h2 {
+        font-size: 23px;
+    }
+
+    .message {
+        font-size: 17px;
+        line-height: 1.6;
+    }
+
+
+    /* PHOTO SECTION */
+
+    .photo-section {
+        margin-top: 40px;
+        padding: 10px;
+    }
+
+    .photo-title {
+        font-size: 25px;
+        line-height: 1.3;
+    }
+
+    .photo-subtitle {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    .photo-gallery {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 12px;
+
+        width: 100%;
+    }
+
+    .photo-card {
+        height: 230px;
+
+        border-radius: 15px;
+
+        padding: 4px;
+    }
+
+
+    /* PHOTO VIEWER */
+
+    .photo-viewer img {
+        max-width: 94%;
+        max-height: 80%;
+    }
+
+    .close-photo {
+        top: 15px;
+        right: 20px;
+
+        font-size: 42px;
+    }
+
+
+    /* LOVE LETTER */
+
+    .love-letter {
+        padding: 60px 10px;
+    }
+
+    .letter-card {
+        width: 100%;
+
+        padding: 30px 20px;
+
+        border-radius: 22px;
+    }
+
+    .letter-heart {
+        font-size: 55px;
+    }
+
+    .letter-card h2 {
+        font-size: 24px;
+    }
+
+    .typed-letter {
+        font-size: 17px;
+
+        line-height: 1.7;
+    }
+
+
+    /* GIFT SECTION */
+
+    .gift-section {
+        padding: 70px 15px;
+    }
+
+    .gift-section h2 {
+        font-size: 27px;
+    }
+
+    .gift-hint {
+        font-size: 16px;
+    }
+
+    .gift-box {
+        transform: scale(0.85);
+    }
+
+    .gift-box:hover {
+        transform: scale(0.9);
+    }
+
+    .final-message {
+        width: 100%;
+
+        padding: 30px 20px;
+
+        border-radius: 22px;
+    }
+
+    .final-heart {
+        font-size: 65px;
+    }
+
+    .final-message h1 {
+        font-size: 30px;
+    }
+
+    .final-message p {
+        font-size: 17px;
+        line-height: 1.6;
+    }
+
+    .final-hearts {
+        font-size: 25px;
+
+        letter-spacing: 4px;
+    }
+
+}
+
+.music-button {
+    position: fixed;
+
+    top: 20px;
+    right: 20px;
+
+    z-index: 1000;
+
+    padding: 10px 18px;
+
+    border-radius: 25px;
+
+    background: rgba(255,255,255,0.9);
+
+    color: #ff4081;
+
+    font-size: 14px;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.15);
+}
+
+@media (max-width: 600px) {
+
+    .music-button {
+        top: 12px;
+        right: 12px;
+
+        padding: 8px 14px;
+
+        font-size: 13px;
+    }
+
+}
+
+/* =========================
+   CINEMATIC OPENING SCREEN
+========================= */
+
+#openingScreen {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    z-index: 99999;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #35134f 0%,
+            #170b27 45%,
+            #05020a 100%
+        );
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    transition:
+        opacity 1.5s ease,
+        visibility 1.5s ease;
+}
+
+
+/* When opening screen disappears */
+
+#openingScreen.hide {
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+}
+
+
+/* CONTENT */
+
+.opening-content {
+    position: relative;
+
+    z-index: 2;
+
+    text-align: center;
+
+    padding: 20px;
+
+    animation:
+        openingAppear 2s ease;
+}
+
+
+.opening-heart {
+    font-size: 85px;
+
+    margin-bottom: 15px;
+
+    animation:
+        openingHeartbeat 1.5s infinite;
+}
+
+
+.opening-content h1 {
+    color: white;
+
+    font-size: 60px;
+
+    margin: 10px 0;
+
+    letter-spacing: 3px;
+
+    font-weight: 700;
+
+    text-shadow:
+        0 0 20px rgba(255, 100, 180, 0.8),
+        0 0 50px rgba(255, 100, 180, 0.4);
+}
+
+
+.opening-content p {
+    color: rgba(255,255,255,0.85);
+
+    font-size: 20px;
+
+    margin: 15px 0 25px;
+}
+
+
+.opening-line {
+    width: 100px;
+
+    height: 2px;
+
+    margin: 20px auto 30px;
+
+    background: rgba(255,255,255,0.8);
+
+    box-shadow:
+        0 0 15px rgba(255,255,255,0.8);
+
+    animation:
+        lineGlow 2s infinite;
+}
+
+
+/* OPENING BUTTON */
+
+.opening-content button {
+    background: white;
+
+    color: #d83f80;
+
+    border: none;
+
+    border-radius: 30px;
+
+    padding: 15px 30px;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,0.25);
+
+    transition: 0.3s;
+}
+
+
+.opening-content button:hover {
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 30px rgba(255,255,255,0.5);
+}
+
+
+/* =========================
+   STAR FIELD
+========================= */
+
+.stars,
+.stars::before,
+.stars::after {
+    position: absolute;
+
+    content: "";
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(
+            2px 2px at 20% 30%,
+            white,
+            transparent
+        ),
+        radial-gradient(
+            2px 2px at 80% 20%,
+            white,
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 40% 70%,
+            white,
+            transparent
+        ),
+        radial-gradient(
+            2px 2px at 70% 80%,
+            white,
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 15% 85%,
+            white,
+            transparent
+        ),
+        radial-gradient(
+            2px 2px at 90% 60%,
+            white,
+            transparent
+        );
+
+    background-size: 300px 300px;
+
+    animation: starsMove 8s linear infinite;
+}
+
+
+.stars::before {
+    opacity: 0.5;
+
+    transform: scale(1.5);
+
+    animation-duration: 12s;
+}
+
+
+.stars::after {
+    opacity: 0.3;
+
+    transform: scale(2);
+
+    animation-duration: 18s;
+}
+
+
+/* =========================
+   OPENING ANIMATIONS
+========================= */
+
+@keyframes openingAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+@keyframes openingHeartbeat {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+
+@keyframes lineGlow {
+
+    0% {
+        opacity: 0.4;
+
+        transform: scaleX(0.7);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform: scaleX(1);
+    }
+
+    100% {
+        opacity: 0.4;
+
+        transform: scaleX(0.7);
+    }
+
+}
+
+
+@keyframes starsMove {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-300px);
+    }
+
+}
+
+/* =========================================
+   FLOATING HEARTS & PETALS
+========================================= */
+
+#floatingParticles {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 9990;
+}
+
+
+/* Individual particles */
+
+.floating-particle {
+    position: absolute;
+
+    bottom: -40px;
+
+    user-select: none;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    animation-name: floatUp;
+
+    animation-timing-function: linear;
+
+    animation-fill-mode: forwards;
+}
+
+
+/* Floating animation */
+
+@keyframes floatUp {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(0.7);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    50% {
+        transform:
+            translateY(-50vh)
+            rotate(180deg)
+            scale(1);
+    }
+
+    90% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform:
+            translateY(-115vh)
+            rotate(360deg)
+            scale(0.8);
+
+        opacity: 0;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    #floatingParticles {
+        height: 100vh;
+    }
+
+    .floating-particle {
+        opacity: 0.65;
+    }
+
+}
+
+/* =========================================
+   PREMIUM ROMANTIC VISUAL UPGRADE
+========================================= */
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* =========================================
+   PREMIUM BACKGROUND
+========================================= */
+
+body {
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255, 105, 180, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 30%, rgba(255, 20, 147, 0.14), transparent 30%),
+        radial-gradient(circle at 50% 80%, rgba(180, 80, 255, 0.12), transparent 35%),
+        linear-gradient(135deg, #120016, #2b062f, #160018);
+
+    background-attachment: fixed;
+}
+
+
+/* =========================================
+   GENERAL TEXT GLOW
+========================================= */
+
+h1 {
+    text-shadow:
+        0 0 10px rgba(255, 120, 190, 0.5),
+        0 0 25px rgba(255, 70, 150, 0.25);
+}
+
+h2 {
+    text-shadow:
+        0 0 8px rgba(255, 150, 200, 0.35);
+}
+
+
+/* =========================================
+   BUTTON PREMIUM EFFECT
+========================================= */
+
+button {
+    position: relative;
+    overflow: hidden;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.03);
+
+    box-shadow:
+        0 10px 30px rgba(255, 50, 150, 0.35),
+        0 0 20px rgba(255, 100, 180, 0.25);
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+
+/* Button shine */
+
+button::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.35),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+
+    transition: left 0.7s ease;
+}
+
+button:hover::before {
+    left: 140%;
+}
+
+
+/* =========================================
+   HEART GLOW
+========================================= */
+
+.heart,
+.big-heart,
+.final-heart,
+.letter-heart {
+
+    filter:
+        drop-shadow(0 0 10px rgba(255, 40, 130, 0.7))
+        drop-shadow(0 0 25px rgba(255, 80, 170, 0.4));
+
+}
+
+
+/* =========================================
+   PHOTO CARDS
+========================================= */
+
+.photo-card {
+
+    position: relative;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.35),
+        0 0 25px rgba(255, 70, 160, 0.12);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+.photo-card:hover {
+
+    transform:
+        translateY(-10px)
+        scale(1.03);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.45),
+        0 0 35px rgba(255, 70, 160, 0.3);
+}
+
+
+.photo-card img {
+
+    transition:
+        transform 0.6s ease,
+        filter 0.6s ease;
+}
+
+
+.photo-card:hover img {
+
+    transform: scale(1.08);
+
+    filter:
+        brightness(1.08)
+        saturate(1.1);
+}
+
+
+/* =========================================
+   LOVE LETTER PREMIUM GLASS
+========================================= */
+
+.letter-card {
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.12),
+            rgba(255, 255, 255, 0.04)
+        );
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.18);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(255, 70, 160, 0.12);
+
+    border-radius: 25px;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+.letter-card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.5),
+        0 0 45px rgba(255, 70, 160, 0.2);
+}
+
+
+/* =========================================
+   GIFT SECTION
+========================================= */
+
+.gift-section {
+
+    position: relative;
+
+    padding-top: 80px;
+    padding-bottom: 100px;
+}
+
+
+.gift-hint {
+
+    opacity: 0.8;
+
+    animation:
+        hintPulse 2s infinite ease-in-out;
+}
+
+
+@keyframes hintPulse {
+
+    0%,
+    100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================================
+   FINAL MESSAGE
+========================================= */
+
+.final-message {
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.12),
+            rgba(255, 255, 255, 0.04)
+        );
+
+    border:
+        1px solid rgba(255, 255, 255, 0.2);
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.45),
+        0 0 50px rgba(255, 60, 150, 0.18);
+
+    border-radius: 30px;
+
+}
+
+
+/* =========================================
+   MUSIC BUTTON
+========================================= */
+
+.music-button {
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    background:
+        rgba(255, 255, 255, 0.1);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.2);
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.25);
+
+    transition:
+        all 0.3s ease;
+}
+
+
+.music-button:hover {
+
+    background:
+        rgba(255, 255, 255, 0.18);
+
+}
+
+
+/* =========================================
+   MOBILE OPTIMIZATION
+========================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+    }
+
+    .photo-card {
+        border-radius: 16px;
+    }
+
+    .letter-card {
+        border-radius: 20px;
+    }
+
+    .final-message {
+        border-radius: 22px;
+    }
+
+    button {
+        min-height: 45px;
+    }
+
+}
+
+/* =========================================
+   CINEMATIC OPENING SCREEN
+========================================= */
+
+#openingScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 50, 150, 0.20),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 20% 30%,
+            rgba(180, 50, 255, 0.18),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(255, 80, 160, 0.15),
+            transparent 30%
+        ),
+        #09000d;
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
+}
+
+
+/* Opening screen disappears */
+
+#openingScreen.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+
+/* =========================================
+   OPENING CONTENT
+========================================= */
+
+.opening-content {
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+
+    width: min(90%, 600px);
+
+    animation:
+        openingContent 1.8s ease forwards;
+}
+
+
+@keyframes openingContent {
+
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+/* =========================================
+   OPENING HEART
+========================================= */
+
+.opening-heart {
+
+    font-size: 80px;
+
+    margin-bottom: 20px;
+
+    animation:
+        openingHeart 1.8s infinite ease-in-out;
+
+    filter:
+        drop-shadow(0 0 10px rgba(255, 50, 130, 0.8))
+        drop-shadow(0 0 35px rgba(255, 60, 160, 0.5));
+}
+
+
+@keyframes openingHeart {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+}
+
+
+/* =========================================
+   OPENING TITLE
+========================================= */
+
+.opening-content h1 {
+
+    margin: 0;
+
+    font-size: clamp(2.5rem, 8vw, 5rem);
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #ffb6d9,
+            #ffffff
+        );
+
+    background-clip: text;
+-webkit-background-clip: text;
+
+-webkit-text-fill-color: transparent;
+
+    animation:
+        titleGlow 3s infinite ease-in-out;
+}
+
+
+@keyframes titleGlow {
+
+    0%,
+    100% {
+        filter:
+            drop-shadow(
+                0 0 8px
+                rgba(255, 100, 180, 0.3)
+            );
+    }
+
+    50% {
+        filter:
+            drop-shadow(
+                0 0 25px
+                rgba(255, 100, 180, 0.7)
+            );
+    }
+
+}
+
+
+/* =========================================
+   OPENING SUBTITLE
+========================================= */
+
+.opening-content p {
+
+    margin-top: 15px;
+
+    font-size: 1.1rem;
+
+    letter-spacing: 1px;
+
+    color: rgba(255, 255, 255, 0.75);
+
+}
+
+
+/* =========================================
+   DECORATIVE LINE
+========================================= */
+
+.opening-line {
+
+    width: 100px;
+    height: 1px;
+
+    margin: 25px auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #ff78b7,
+            transparent
+        );
+
+    box-shadow:
+        0 0 15px rgba(255, 80, 160, 0.7);
+
+}
+
+
+/* =========================================
+   OPENING BUTTON
+========================================= */
+
+.opening-content button {
+
+    padding: 15px 32px;
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.25);
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 70, 150, 0.85),
+            rgba(170, 50, 200, 0.85)
+        );
+
+    color: white;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 35px
+        rgba(255, 50, 150, 0.35),
+
+        0 0 25px
+        rgba(255, 70, 160, 0.2);
+
+    animation:
+        buttonFloat 2.5s infinite ease-in-out;
+}
+
+
+@keyframes buttonFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(
+            2px 2px at 10% 20%,
+            rgba(255,255,255,0.8),
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 25% 70%,
+            rgba(255,255,255,0.7),
+            transparent
+        ),
+        radial-gradient(
+            2px 2px at 40% 35%,
+            rgba(255,255,255,0.8),
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 60% 15%,
+            rgba(255,255,255,0.7),
+            transparent
+        ),
+        radial-gradient(
+            2px 2px at 75% 55%,
+            rgba(255,255,255,0.8),
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 90% 25%,
+            rgba(255,255,255,0.7),
+            transparent
+        ),
+        radial-gradient(
+            2px 2px at 85% 85%,
+            rgba(255,255,255,0.8),
+            transparent
+        );
+
+    animation:
+        starsTwinkle 4s infinite ease-in-out;
+}
+
+
+@keyframes starsTwinkle {
+
+    0%,
+    100% {
+        opacity: 0.45;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE OPENING
+========================================= */
+
+@media (max-width: 600px) {
+
+    .opening-heart {
+        font-size: 65px;
+    }
+
+    .opening-content p {
+        font-size: 0.95rem;
+    }
+
+    .opening-content button {
+        padding: 13px 25px;
+        font-size: 0.95rem;
+    }
+
+}
+/* =========================================
+   PREMIUM PHOTO GALLERY
+========================================= */
+
+.photo-section {
+    margin-top: 80px;
+    padding: 20px 0;
+}
+
+
+/* Gallery heading */
+
+.photo-title {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    margin-bottom: 10px;
+}
+
+
+.photo-subtitle {
+    opacity: 0.7;
+    margin-bottom: 35px;
+}
+
+
+/* =========================================
+   GALLERY GRID
+========================================= */
+
+.photo-gallery {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+
+    max-width: 1000px;
+
+    margin: auto;
+
+    padding: 10px;
+}
+
+
+/* =========================================
+   PHOTO CARD
+========================================= */
+
+.photo-card {
+    position: relative;
+
+    aspect-ratio: 4 / 5;
+
+    overflow: hidden;
+
+    border-radius: 22px;
+
+    cursor: pointer;
+
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.18);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.35),
+        0 0 25px rgba(255, 70, 160, 0.12);
+
+    transition:
+        transform 0.5s ease,
+        box-shadow 0.5s ease;
+}
+
+
+/* Photo */
+
+.photo-card img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition:
+        transform 0.7s ease,
+        filter 0.5s ease;
+}
+
+
+/* =========================================
+   HOVER EFFECT
+========================================= */
+
+.photo-card:hover {
+
+    transform:
+        translateY(-12px)
+        rotate(-1deg);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(255, 70, 160, 0.3);
+}
+
+
+.photo-card:nth-child(2):hover {
+
+    transform:
+        translateY(-12px)
+        rotate(1deg);
+}
+
+
+.photo-card:hover img {
+
+    transform: scale(1.1);
+
+    filter:
+        brightness(1.08)
+        saturate(1.12);
+}
+
+
+/* =========================================
+   PHOTO SHINE
+========================================= */
+
+.photo-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.25),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition:
+        left 0.8s ease;
+
+    pointer-events: none;
+}
+
+
+.photo-card:hover::after {
+
+    left: 140%;
+}
+
+
+/* =========================================
+   SMALL HEART DECORATION
+========================================= */
+
+.photo-card::before {
+
+    content: "❤️";
+
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    z-index: 2;
+
+    font-size: 18px;
+
+    opacity: 0;
+
+    transform: scale(0.5);
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            rgba(255, 50, 130, 0.8)
+        );
+}
+
+
+.photo-card:hover::before {
+
+    opacity: 1;
+
+    transform: scale(1);
+}
+
+
+/* =========================================
+   FULL SCREEN PHOTO VIEWER
+========================================= */
+
+.photo-viewer {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 25px;
+
+    background:
+        rgba(5, 0, 10, 0.92);
+
+    backdrop-filter: blur(12px);
+
+    -webkit-backdrop-filter: blur(12px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 0.4s ease,
+        visibility 0.4s ease;
+
+    z-index: 9999;
+}
+
+
+.photo-viewer.show {
+
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+/* Large image */
+
+#largePhoto {
+
+    max-width: 90vw;
+    max-height: 85vh;
+
+    object-fit: contain;
+
+    border-radius: 18px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.2);
+
+    box-shadow:
+        0 25px 80px
+        rgba(0, 0, 0, 0.6),
+
+        0 0 40px
+        rgba(255, 60, 150, 0.2);
+
+    animation:
+        photoAppear 0.4s ease;
+}
+
+
+@keyframes photoAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+
+/* =========================================
+   CLOSE BUTTON
+========================================= */
+
+.close-photo {
+
+    position: absolute;
+
+    top: 20px;
+    right: 25px;
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.1);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.2);
+
+    color: white;
+
+    font-size: 30px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.close-photo:hover {
+
+    transform: rotate(90deg);
+
+    background:
+        rgba(255, 70, 150, 0.35);
+}
+
+
+/* =========================================
+   MOBILE GALLERY
+========================================= */
+
+@media (max-width: 700px) {
+
+    .photo-gallery {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 15px;
+
+    }
+
+    .photo-card {
+
+        border-radius: 16px;
+
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .photo-gallery {
+
+        grid-template-columns:
+            1fr;
+
+        max-width: 340px;
+
+    }
+
+    .photo-card {
+
+        aspect-ratio: 4 / 5;
+
+    }
+
+}
+
+/* =========================================
+   PREMIUM GIFT BOX
+========================================= */
+
+.gift-section {
+    text-align: center;
+    position: relative;
+}
+
+
+/* =========================================
+   GIFT BOX
+========================================= */
+
+.gift-box {
+    position: relative;
+
+    width: 150px;
+    height: 140px;
+
+    margin: 55px auto 20px;
+
+    cursor: pointer;
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform 0.4s ease;
+
+    filter:
+        drop-shadow(
+            0 20px 30px
+            rgba(0, 0, 0, 0.35)
+        );
+}
+
+
+/* Hover */
+
+.gift-box:hover {
+    transform:
+        translateY(-8px)
+        scale(1.05);
+}
+
+
+/* =========================================
+   GIFT BODY
+========================================= */
+
+.gift-body {
+    position: absolute;
+
+    left: 10px;
+    bottom: 0;
+
+    width: 130px;
+    height: 95px;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff4f91,
+            #d91b68
+        );
+
+    box-shadow:
+        inset 0 0 15px
+        rgba(255, 255, 255, 0.15),
+
+        0 10px 25px
+        rgba(0, 0, 0, 0.3);
+}
+
+
+/* =========================================
+   GIFT LID
+========================================= */
+
+.gift-lid {
+    position: absolute;
+
+    left: 0;
+    top: 25px;
+
+    width: 150px;
+    height: 35px;
+
+    border-radius: 7px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff6ba7,
+            #e32a73
+        );
+
+    z-index: 3;
+
+    transform-origin: left bottom;
+
+    transition:
+        transform 0.8s cubic-bezier(
+            0.68,
+            -0.55,
+            0.27,
+            1.55
+        );
+
+    box-shadow:
+        0 8px 18px
+        rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================
+   RIBBON
+========================================= */
+
+.gift-ribbon {
+    position: absolute;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 22px;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffd166,
+            #fff0a8,
+            #ffd166
+        );
+
+    box-shadow:
+        0 0 12px
+        rgba(255, 210, 80, 0.4);
+}
+
+
+/* Ribbon on lid */
+
+.gift-lid::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 0;
+
+    transform: translateX(-50%);
+
+    width: 22px;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffd166,
+            #fff0a8,
+            #ffd166
+        );
+}
+
+
+/* =========================================
+   GIFT BOW
+========================================= */
+
+.gift-bow {
+    position: absolute;
+
+    top: -15px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    font-size: 42px;
+
+    z-index: 5;
+
+    filter:
+        drop-shadow(
+            0 5px 10px
+            rgba(0, 0, 0, 0.3)
+        );
+
+    transition:
+        transform 0.5s ease;
+}
+
+
+.gift-box:hover .gift-bow {
+
+    transform:
+        translateX(-50%)
+        rotate(-5deg)
+        scale(1.1);
+}
+
+
+/* =========================================
+   GIFT OPEN ANIMATION
+========================================= */
+
+.gift-box.open .gift-lid {
+
+    transform:
+        rotate(-25deg)
+        translateY(-35px)
+        translateX(-5px);
+}
+
+
+.gift-box.open .gift-bow {
+
+    transform:
+        translateX(-50%)
+        translateY(-45px)
+        scale(1.2)
+        rotate(-8deg);
+}
+
+
+/* =========================================
+   GLOW WHEN OPENED
+========================================= */
+
+.gift-box.open {
+
+    animation:
+        giftGlow 1.5s ease-in-out infinite;
+}
+
+
+@keyframes giftGlow {
+
+    0%,
+    100% {
+        filter:
+            drop-shadow(
+                0 0 10px
+                rgba(255, 70, 160, 0.4)
+            );
+    }
+
+    50% {
+        filter:
+            drop-shadow(
+                0 0 35px
+                rgba(255, 70, 160, 0.8)
+            );
+    }
+}
+
+
+/* =========================================
+   CLICK TEXT
+========================================= */
+
+.click-text {
+
+    opacity: 0.7;
+
+    animation:
+        clickPulse 2s infinite ease-in-out;
+}
+
+
+@keyframes clickPulse {
+
+    0%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: translateY(-4px);
+        opacity: 1;
+    }
+}
+
+
+/* =========================================
+   FINAL MESSAGE
+========================================= */
+
+.final-message {
+
+    max-width: 650px;
+
+    margin: 50px auto 0;
+
+    padding: 45px 30px;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        translateY(40px)
+        scale(0.95);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease,
+        visibility 1s ease;
+}
+
+
+.final-message.show {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* =========================================
+   FINAL HEART
+========================================= */
+
+.final-heart {
+
+    font-size: 70px;
+
+    margin-bottom: 15px;
+
+    animation:
+        finalHeartBeat 1.5s infinite ease-in-out;
+}
+
+
+@keyframes finalHeartBeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.18);
+    }
+}
+
+
+/* =========================================
+   FINAL HEARTS
+========================================= */
+
+.final-hearts {
+
+    margin-top: 25px;
+
+    font-size: 25px;
+
+    letter-spacing: 8px;
+
+    animation:
+        finalHearts 2s infinite ease-in-out;
+}
+
+
+@keyframes finalHearts {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+
+/* =========================================
+   MOBILE GIFT
+========================================= */
+
+@media (max-width: 600px) {
+
+    .gift-box {
+        width: 130px;
+        height: 125px;
+    }
+
+    .gift-body {
+        width: 115px;
+        height: 85px;
+        left: 7px;
+    }
+
+    .gift-lid {
+        width: 130px;
+        height: 32px;
+    }
+
+    .gift-bow {
+        font-size: 36px;
+    }
+
+    .final-message {
+        margin-left: 15px;
+        margin-right: 15px;
+        padding: 35px 20px;
+    }
+
+}
+
+/* =========================================
+   PREMIUM MUSIC BUTTON
+========================================= */
+
+.music-button {
+    position: fixed;
+
+    top: 20px;
+    right: 20px;
+
+    z-index: 10000;
+
+    padding: 10px 18px;
+
+    border-radius: 50px;
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    background:
+        rgba(255, 255, 255, 0.10);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.25);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.25),
+        0 0 20px rgba(255, 70, 160, 0.15);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.music-button:hover {
+
+    transform: translateY(-3px) scale(1.04);
+
+    background:
+        rgba(255, 80, 160, 0.18);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.3),
+        0 0 25px rgba(255, 70, 160, 0.35);
+}
+
+
+/* =========================================
+   MUSIC BUTTON ACTIVE ANIMATION
+========================================= */
+
+.music-button.playing {
+
+    animation:
+        musicPulse 1.8s infinite ease-in-out;
+}
+
+
+@keyframes musicPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 8px 25px rgba(0, 0, 0, 0.25),
+            0 0 15px rgba(255, 70, 160, 0.2);
+    }
+
+    50% {
+        box-shadow:
+            0 8px 25px rgba(0, 0, 0, 0.25),
+            0 0 30px rgba(255, 70, 160, 0.6);
+    }
+
+}
+
+
+/* =========================================
+   SCREEN TRANSITIONS
+========================================= */
+
+.screen {
+
+    animation:
+        screenAppear 1s ease both;
+}
+
+
+@keyframes screenAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================
+   WELCOME SCREEN
+========================================= */
+
+#welcome {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   MAIN BIRTHDAY SCREEN
+========================================= */
+
+#birthday {
+
+    min-height: 100vh;
+
+    animation:
+        birthdayAppear 1.2s ease;
+}
+
+
+@keyframes birthdayAppear {
+
+    0% {
+        opacity: 0;
+        transform: scale(0.97);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+
+/* =========================================
+   MESSAGE ANIMATION
+========================================= */
+
+.message {
+
+    animation:
+        messageAppear 0.8s ease;
+}
+
+
+@keyframes messageAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================
+   SECRET MESSAGE
+========================================= */
+
+#secretMessage {
+
+    margin-top: 20px;
+
+    padding: 15px 20px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        0 0 20px
+        rgba(255, 70, 160, 0.12);
+
+}
+
+
+/* =========================================
+   MOBILE MUSIC BUTTON
+========================================= */
+
+@media (max-width: 600px) {
+
+    .music-button {
+
+        top: 12px;
+        right: 12px;
+
+        padding: 8px 13px;
+
+        font-size: 12px;
+
+    }
+
+}
+
+/* =========================================
+   FINAL RESPONSIVE & POLISH
+========================================= */
+
+
+/* =========================================
+   GLOBAL FIXES
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+}
+
+
+/* Prevent images from overflowing */
+
+img {
+    max-width: 100%;
+}
+
+
+/* =========================================
+   CONTAINER RESPONSIVENESS
+========================================= */
+
+.container {
+    width: min(92%, 1100px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* =========================================
+   WELCOME SCREEN
+========================================= */
+
+#welcome {
+    min-height: 100svh;
+    padding: 80px 20px 40px;
+}
+
+
+/* =========================================
+   BIRTHDAY SCREEN
+========================================= */
+
+#birthday {
+    min-height: 100svh;
+    padding: 80px 20px 60px;
+}
+
+
+/* =========================================
+   MAIN HEART
+========================================= */
+
+.big-heart {
+    animation:
+        mainHeartPulse 2s infinite ease-in-out;
+}
+
+@keyframes mainHeartPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+
+}
+
+
+/* =========================================
+   PHOTO SECTION
+========================================= */
+
+.photo-section {
+    width: 100%;
+    overflow: hidden;
+}
+
+
+/* =========================================
+   LOVE LETTER
+========================================= */
+
+.love-letter {
+    width: 100%;
+    padding: 40px 0;
+}
+
+.typed-letter {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: normal;
+}
+
+
+/* =========================================
+   GIFT SECTION
+========================================= */
+
+.gift-section {
+    width: 100%;
+    min-height: 100svh;
+
+    padding:
+        80px 20px
+        100px;
+}
+
+
+/* =========================================
+   FINAL MESSAGE
+========================================= */
+
+.final-message {
+    width: min(650px, 100%);
+}
+
+
+/* =========================================
+   PHOTO VIEWER
+========================================= */
+
+.photo-viewer {
+    padding: 20px;
+}
+
+#largePhoto {
+    width: auto;
+    max-width: 92vw;
+    max-height: 85svh;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .container {
+        width: min(94%, 800px);
+    }
+
+    .photo-gallery {
+        gap: 18px;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    /* General */
+
+    body {
+        font-size: 15px;
+    }
+
+
+    /* Main container */
+
+    .container {
+        width: 92%;
+    }
+
+
+    /* Headings */
+
+    h1 {
+        line-height: 1.2;
+    }
+
+    h2 {
+        line-height: 1.35;
+    }
+
+
+    /* Welcome */
+
+    #welcome {
+        padding:
+            80px 18px
+            40px;
+    }
+
+
+    /* Birthday */
+
+    #birthday {
+        padding:
+            75px 15px
+            50px;
+    }
+
+
+    /* Opening heart */
+
+    .opening-heart {
+        margin-bottom: 15px;
+    }
+
+
+    /* Main heart */
+
+    .big-heart {
+        font-size: 55px;
+    }
+
+
+    /* Message */
+
+    .message {
+        line-height: 1.7;
+    }
+
+
+    /* Buttons */
+
+    button {
+        max-width: 100%;
+    }
+
+
+    /* Photo section */
+
+    .photo-section {
+        margin-top: 55px;
+    }
+
+
+    .photo-title {
+        padding:
+            0 10px;
+    }
+
+
+    .photo-subtitle {
+        padding:
+            0 10px;
+
+        line-height: 1.6;
+    }
+
+
+    /* Gallery */
+
+    .photo-gallery {
+        width: 100%;
+        padding: 5px;
+    }
+
+
+    /* Love letter */
+
+    .letter-card {
+        width: 100%;
+        padding:
+            30px 20px;
+    }
+
+
+    .typed-letter {
+        font-size: 15px;
+        line-height: 1.8;
+        text-align: left;
+    }
+
+
+    /* Gift */
+
+    .gift-section {
+        padding:
+            70px 15px
+            90px;
+    }
+
+
+    .gift-section h2 {
+        padding:
+            0 10px;
+    }
+
+
+    .gift-hint {
+        line-height: 1.6;
+    }
+
+
+    /* Final message */
+
+    .final-message {
+        width: 100%;
+        padding:
+            35px 20px;
+    }
+
+
+    .final-message p {
+        line-height: 1.7;
+    }
+
+
+    /* Music button */
+
+    .music-button {
+        top: 10px;
+        right: 10px;
+
+        padding:
+            8px 12px;
+
+        font-size: 12px;
+    }
+
+
+    /* Floating particles */
+
+    #floatingParticles {
+        height: 100svh;
+    }
+
+
+    .floating-particle {
+        opacity: 0.55;
+    }
+
+
+    /* Photo viewer */
+
+    .photo-viewer {
+        padding: 15px;
+    }
+
+
+    #largePhoto {
+        max-width: 94vw;
+        max-height: 80svh;
+        border-radius: 14px;
+    }
+
+
+    /* Close button */
+
+    .close-photo {
+        top: 12px;
+        right: 12px;
+
+        width: 42px;
+        height: 42px;
+
+        font-size: 27px;
+    }
+
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-width: 380px) {
+
+    .opening-content h1 {
+        font-size: 2.2rem;
+    }
+
+
+    .opening-heart {
+        font-size: 55px;
+    }
+
+
+    .opening-content button {
+        padding:
+            12px 20px;
+
+        font-size: 14px;
+    }
+
+
+    .photo-gallery {
+        grid-template-columns: 1fr;
+    }
+
+
+    .photo-card {
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .music-button {
+        font-size: 11px;
+        padding: 7px 10px;
+    }
+
+}
+
+
+/* =========================================
+   REDUCE ANIMATIONS IF USER PREFERS
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+}
