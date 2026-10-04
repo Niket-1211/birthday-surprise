@@ -1,14 +1,58 @@
 /* =========================================
-   WELCOME / BIRTHDAY SCREEN
+   BIRTHDAY WEBSITE JAVASCRIPT
+========================================= */
+
+
+/* =========================================
+   OPEN MY SURPRISE
+========================================= */
+
+function enterBirthday() {
+
+    const opening = document.getElementById("openingScreen");
+    const welcome = document.getElementById("welcome");
+    const music = document.getElementById("birthdayMusic");
+    const musicButton = document.getElementById("musicButton");
+
+    /* Hide opening screen */
+    if (opening) {
+        opening.classList.add("hide");
+    }
+
+    /* Show welcome screen */
+    if (welcome) {
+        welcome.classList.remove("hidden");
+    }
+
+    /* Start music */
+    if (music) {
+
+        music.play()
+            .then(function () {
+
+                if (musicButton) {
+                    musicButton.innerHTML = "🔊 Music On";
+                    musicButton.classList.add("playing");
+                }
+
+            })
+            .catch(function (error) {
+
+                console.log("Music error:", error);
+
+            });
+    }
+}
+
+
+/* =========================================
+   OPEN BIRTHDAY SURPRISE
 ========================================= */
 
 function startSurprise() {
 
-    const welcome =
-        document.getElementById("welcome");
-
-    const birthday =
-        document.getElementById("birthday");
+    const welcome = document.getElementById("welcome");
+    const birthday = document.getElementById("birthday");
 
     if (welcome) {
         welcome.classList.add("hidden");
@@ -18,6 +62,15 @@ function startSurprise() {
         birthday.classList.remove("hidden");
     }
 
+    /* Scroll to birthday section */
+    if (birthday) {
+        setTimeout(function () {
+            birthday.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }, 100);
+    }
 }
 
 
@@ -27,62 +80,344 @@ function startSurprise() {
 
 function showMessage() {
 
-    const message =
-        document.getElementById("secretMessage");
+    const message = document.getElementById("secretMessage");
 
     if (message) {
         message.classList.remove("hidden");
     }
-
 }
 
 
 /* =========================================
-   PHOTO FULL-SCREEN VIEWER
+   PHOTO VIEWER
 ========================================= */
+
+let galleryPhotos = [];
+let currentPhotoIndex = 0;
+
+
+/* Get all gallery photos */
+
+function updateGalleryPhotos() {
+
+    galleryPhotos = Array.from(
+        document.querySelectorAll(".photo-gallery img")
+    );
+
+}
+
+
+/* Open photo */
 
 function openPhoto(photo) {
 
-    const viewer =
-        document.getElementById("photoViewer");
-
-    const largePhoto =
-        document.getElementById("largePhoto");
+    const viewer = document.getElementById("photoViewer");
+    const largePhoto = document.getElementById("largePhoto");
 
     if (!viewer || !largePhoto || !photo) {
         return;
     }
 
-    largePhoto.src = photo.src;
+    updateGalleryPhotos();
 
-    viewer.classList.add("show");
+    currentPhotoIndex = galleryPhotos.indexOf(photo);
 
+    if (currentPhotoIndex < 0) {
+        currentPhotoIndex = 0;
+    }
+
+    showCurrentPhoto();
+
+    /* IMPORTANT:
+       HTML uses .active */
+    viewer.classList.add("active");
+
+    document.body.style.overflow = "hidden";
 }
 
 
-function closePhoto() {
+/* Show current photo */
 
-    const viewer =
-        document.getElementById("photoViewer");
+function showCurrentPhoto() {
 
-    if (viewer) {
-        viewer.classList.remove("show");
+    const largePhoto = document.getElementById("largePhoto");
+    const counter = document.getElementById("photoCounter");
+
+    if (!largePhoto || galleryPhotos.length === 0) {
+        return;
     }
 
+    const photo = galleryPhotos[currentPhotoIndex];
+
+    if (!photo) {
+        return;
+    }
+
+    largePhoto.src = photo.src;
+    largePhoto.alt = photo.alt || "Birthday Photo";
+
+    if (counter) {
+        counter.textContent =
+            (currentPhotoIndex + 1) +
+            " / " +
+            galleryPhotos.length;
+    }
 }
 
 
 /* =========================================
-   CLOSE PHOTO VIEWER WITH ESCAPE KEY
+   NEXT PHOTO
 ========================================= */
 
-document.addEventListener("keydown", function (event) {
+function nextPhoto() {
 
-    if (event.key === "Escape") {
-        closePhoto();
+    if (galleryPhotos.length === 0) {
+        updateGalleryPhotos();
+    }
+
+    if (galleryPhotos.length === 0) {
+        return;
+    }
+
+    currentPhotoIndex++;
+
+    if (currentPhotoIndex >= galleryPhotos.length) {
+        currentPhotoIndex = 0;
+    }
+
+    showCurrentPhoto();
+}
+
+
+/* =========================================
+   PREVIOUS PHOTO
+========================================= */
+
+function previousPhoto() {
+
+    if (galleryPhotos.length === 0) {
+        updateGalleryPhotos();
+    }
+
+    if (galleryPhotos.length === 0) {
+        return;
+    }
+
+    currentPhotoIndex--;
+
+    if (currentPhotoIndex < 0) {
+        currentPhotoIndex = galleryPhotos.length - 1;
+    }
+
+    showCurrentPhoto();
+}
+
+
+/* =========================================
+   CLOSE PHOTO VIEWER
+========================================= */
+
+function closePhoto() {
+
+    const viewer = document.getElementById("photoViewer");
+
+    if (viewer) {
+        viewer.classList.remove("active");
+    }
+
+    document.body.style.overflow = "";
+}
+
+
+/* =========================================
+   PHOTO BUTTONS
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const closeButton =
+        document.getElementById("closePhotoButton");
+
+    const previousButton =
+        document.getElementById("photoPrev");
+
+    const nextButton =
+        document.getElementById("photoNext");
+
+    const viewer =
+        document.getElementById("photoViewer");
+
+
+    /* Close */
+
+    if (closeButton) {
+
+        closeButton.addEventListener(
+            "click",
+            closePhoto
+        );
+
+    }
+
+
+    /* Previous */
+
+    if (previousButton) {
+
+        previousButton.addEventListener(
+            "click",
+            function (event) {
+
+                event.stopPropagation();
+
+                previousPhoto();
+
+            }
+        );
+
+    }
+
+
+    /* Next */
+
+    if (nextButton) {
+
+        nextButton.addEventListener(
+            "click",
+            function (event) {
+
+                event.stopPropagation();
+
+                nextPhoto();
+
+            }
+        );
+
+    }
+
+
+    /* Close when clicking dark background */
+
+    if (viewer) {
+
+        viewer.addEventListener(
+            "click",
+            function (event) {
+
+                if (event.target === viewer) {
+                    closePhoto();
+                }
+
+            }
+        );
+
     }
 
 });
+
+
+/* =========================================
+   KEYBOARD CONTROLS
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        const viewer =
+            document.getElementById("photoViewer");
+
+        if (!viewer ||
+            !viewer.classList.contains("active")) {
+            return;
+        }
+
+
+        /* Escape */
+
+        if (event.key === "Escape") {
+            closePhoto();
+        }
+
+
+        /* Right arrow */
+
+        if (event.key === "ArrowRight") {
+            nextPhoto();
+        }
+
+
+        /* Left arrow */
+
+        if (event.key === "ArrowLeft") {
+            previousPhoto();
+        }
+
+    }
+);
+
+
+/* =========================================
+   MOBILE SWIPE
+========================================= */
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+
+document.addEventListener(
+    "touchstart",
+    function (event) {
+
+        const viewer =
+            document.getElementById("photoViewer");
+
+        if (!viewer ||
+            !viewer.classList.contains("active")) {
+            return;
+        }
+
+        touchStartX =
+            event.changedTouches[0].screenX;
+
+    },
+    { passive: true }
+);
+
+
+document.addEventListener(
+    "touchend",
+    function (event) {
+
+        const viewer =
+            document.getElementById("photoViewer");
+
+        if (!viewer ||
+            !viewer.classList.contains("active")) {
+            return;
+        }
+
+        touchEndX =
+            event.changedTouches[0].screenX;
+
+        const difference =
+            touchEndX - touchStartX;
+
+
+        if (Math.abs(difference) < 50) {
+            return;
+        }
+
+
+        if (difference < 0) {
+            nextPhoto();
+        } else {
+            previousPhoto();
+        }
+
+    },
+    { passive: true }
+);
 
 
 /* =========================================
@@ -148,7 +483,6 @@ function startLetter() {
 
 
     typeLetter();
-
 }
 
 
@@ -169,12 +503,8 @@ function openGift() {
     }
 
 
-    /* Open gift */
-
     gift.classList.add("open");
 
-
-    /* Show final message */
 
     setTimeout(function () {
 
@@ -183,10 +513,7 @@ function openGift() {
     }, 700);
 
 
-    /* Release hearts */
-
     createHearts();
-
 }
 
 
@@ -201,37 +528,23 @@ function createHearts() {
         const heart =
             document.createElement("div");
 
-
         heart.innerHTML = "❤️";
 
-
-        heart.style.position =
-            "fixed";
-
+        heart.style.position = "fixed";
 
         heart.style.left =
             Math.random() * 100 + "%";
 
-
-        heart.style.bottom =
-            "-30px";
-
+        heart.style.bottom = "-30px";
 
         heart.style.fontSize =
             (15 + Math.random() * 25) + "px";
 
+        heart.style.zIndex = "10000";
 
-        heart.style.zIndex =
-            "10000";
+        heart.style.pointerEvents = "none";
 
-
-        heart.style.pointerEvents =
-            "none";
-
-
-        document.body.appendChild(
-            heart
-        );
+        document.body.appendChild(heart);
 
 
         const duration =
@@ -241,27 +554,20 @@ function createHearts() {
         heart.animate(
 
             [
-
                 {
                     transform:
                         "translateY(0) scale(1)",
-
                     opacity: 1
                 },
 
                 {
-
                     transform:
                         "translateY(-100vh) scale(1.5)",
-
                     opacity: 0
-
                 }
-
             ],
 
             {
-
                 duration:
                     duration * 1000,
 
@@ -270,7 +576,6 @@ function createHearts() {
 
                 fill:
                     "forwards"
-
             }
 
         );
@@ -283,72 +588,11 @@ function createHearts() {
         }, duration * 1000);
 
     }
-
 }
 
 
 /* =========================================
-   OPENING SCREEN
-========================================= */
-
-function enterBirthday() {
-
-    const opening =
-        document.getElementById("openingScreen");
-
-    const music =
-        document.getElementById("birthdayMusic");
-
-    const musicButton =
-        document.getElementById("musicButton");
-
-
-    /* Hide opening screen */
-
-    if (opening) {
-
-        opening.classList.add("hide");
-
-    }
-
-
-    /* Start music */
-
-    if (music) {
-
-        music.play()
-
-            .then(function () {
-
-                if (musicButton) {
-
-                    musicButton.innerHTML =
-                        "🔊 Music On";
-
-                    musicButton.classList.add(
-                        "playing"
-                    );
-
-                }
-
-            })
-
-            .catch(function (error) {
-
-                console.log(
-                    "Music could not start:",
-                    error
-                );
-
-            });
-
-    }
-
-}
-
-
-/* =========================================
-   BACKGROUND MUSIC
+   MUSIC
 ========================================= */
 
 function toggleMusic() {
@@ -359,157 +603,44 @@ function toggleMusic() {
     const button =
         document.getElementById("musicButton");
 
-
-    /* Check audio */
-
-    if (!music) {
-
-        console.error(
-            "birthdayMusic audio element was not found."
-        );
-
+    if (!music || !button) {
         return;
-
     }
 
-
-    /* Check button */
-
-    if (!button) {
-
-        console.error(
-            "musicButton was not found."
-        );
-
-        return;
-
-    }
-
-
-    /* =====================================
-       PLAY MUSIC
-    ===================================== */
 
     if (music.paused) {
 
         music.play()
-
             .then(function () {
 
                 button.innerHTML =
                     "🔊 Music On";
 
-
                 button.classList.add(
                     "playing"
                 );
-
-            })
-
-            .catch(function (error) {
-
-                console.error(
-                    "Music could not play:",
-                    error
-                );
-
-
-                button.innerHTML =
-                    "❌ Music Error";
-
-
-                setTimeout(function () {
-
-                    button.innerHTML =
-                        "🎵 Play Music";
-
-                }, 2000);
 
             });
 
     }
 
-
-    /* =====================================
-       PAUSE MUSIC
-    ===================================== */
-
     else {
 
         music.pause();
 
-
         button.innerHTML =
             "🎵 Play Music";
-
 
         button.classList.remove(
             "playing"
         );
 
     }
-
 }
 
 
 /* =========================================
-   MUSIC EVENT
-========================================= */
-
-const birthdayMusic =
-    document.getElementById("birthdayMusic");
-
-
-if (birthdayMusic) {
-
-    birthdayMusic.addEventListener(
-        "play",
-        function () {
-
-            const button =
-                document.getElementById("musicButton");
-
-            if (button) {
-
-                button.innerHTML =
-                    "🔊 Music On";
-
-                button.classList.add(
-                    "playing"
-                );
-
-            }
-
-        }
-    );
-
-
-    birthdayMusic.addEventListener(
-        "pause",
-        function () {
-
-            const button =
-                document.getElementById("musicButton");
-
-            if (button) {
-
-                button.innerHTML =
-                    "🎵 Play Music";
-
-                button.classList.remove(
-                    "playing"
-                );
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =========================================
-   FLOATING HEARTS & PETALS
+   FLOATING PARTICLES
 ========================================= */
 
 function createFloatingParticle() {
@@ -519,16 +650,12 @@ function createFloatingParticle() {
             "floatingParticles"
         );
 
-
     if (!container) {
         return;
     }
 
 
-    /* Different particles */
-
     const particles = [
-
         "❤️",
         "💕",
         "💗",
@@ -537,11 +664,8 @@ function createFloatingParticle() {
         "🌸",
         "🌷",
         "✨"
-
     ];
 
-
-    /* Create particle */
 
     const particle =
         document.createElement("div");
@@ -561,23 +685,13 @@ function createFloatingParticle() {
     );
 
 
-    /* Random horizontal position */
-
     particle.style.left =
         Math.random() * 100 + "%";
 
 
-    /* Random size */
-
-    const size =
-        12 + Math.random() * 22;
-
-
     particle.style.fontSize =
-        size + "px";
+        (12 + Math.random() * 22) + "px";
 
-
-    /* Random animation duration */
 
     const duration =
         5 + Math.random() * 6;
@@ -587,43 +701,30 @@ function createFloatingParticle() {
         duration + "s";
 
 
-    /* Random delay */
-
     particle.style.animationDelay =
         Math.random() * 2 + "s";
 
-
-    /* Add particle */
 
     container.appendChild(
         particle
     );
 
 
-    /* Remove particle */
-
     setTimeout(function () {
 
         particle.remove();
 
     }, (duration + 2) * 1000);
-
 }
 
 
-/* =========================================
-   CREATE FLOATING PARTICLES
-========================================= */
+/* Start particles */
 
 setInterval(
     createFloatingParticle,
     700
 );
 
-
-/* =========================================
-   START WITH A FEW PARTICLES
-========================================= */
 
 for (let i = 0; i < 5; i++) {
 
