@@ -10,16 +10,22 @@
 
     <title>Birthday Surprise ❤️</title>
 
-    <link rel="stylesheet" href="style.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet"
+          href="style.css?v=20261004-2">
 
 </head>
 
 
 <body>
 
-    <!-- FLOATING HEARTS & PETALS -->
 
-<div id="floatingParticles"></div>
+    <!-- =========================================
+         FLOATING PARTICLES
+    ========================================== -->
+
+    <div id="floatingParticles"></div>
+
 
 
     <!-- =========================================
@@ -36,7 +42,9 @@
                 ❤️
             </div>
 
-            <h1>Rashii...</h1>
+            <h1>
+                Rashii...
+            </h1>
 
             <p>
                 I made something special for you
@@ -69,7 +77,10 @@
     </audio>
 
 
-    <!-- MUSIC CONTROL -->
+
+    <!-- =========================================
+         MUSIC CONTROL
+    ========================================== -->
 
     <button id="musicButton"
             class="music-button"
@@ -122,7 +133,9 @@
         <div class="container">
 
 
-            <!-- BIRTHDAY MESSAGE -->
+            <!-- =====================================
+                 BIRTHDAY MESSAGE
+            ====================================== -->
 
             <div class="big-heart">
                 💖
@@ -185,6 +198,11 @@
                 </p>
 
 
+
+                <!-- =================================
+                     PHOTO GALLERY
+                ================================== -->
+
                 <div class="photo-gallery">
 
 
@@ -200,6 +218,7 @@
                     </div>
 
 
+
                     <!-- PHOTO 2 -->
 
                     <div class="photo-card">
@@ -210,6 +229,7 @@
                             onclick="openPhoto(this)">
 
                     </div>
+
 
 
                     <!-- PHOTO 3 -->
@@ -225,7 +245,6 @@
 
 
                 </div>
-
 
             </div>
 
@@ -282,17 +301,66 @@
          class="photo-viewer">
 
 
-        <span class="close-photo"
-              onclick="closePhoto()">
+        <!-- CLOSE BUTTON -->
+
+        <button
+            class="close-photo"
+            id="closePhotoButton"
+            type="button"
+            aria-label="Close photo">
 
             &times;
 
-        </span>
+        </button>
 
 
-        <img id="largePhoto"
-             src=""
-             alt="Rashii">
+
+        <!-- PREVIOUS PHOTO -->
+
+        <button
+            class="photo-prev"
+            id="photoPrev"
+            type="button"
+            aria-label="Previous photo">
+
+            &#10094;
+
+        </button>
+
+
+
+        <!-- LARGE PHOTO -->
+
+        <img
+            id="largePhoto"
+            src=""
+            alt="Rashii">
+
+
+
+        <!-- NEXT PHOTO -->
+
+        <button
+            class="photo-next"
+            id="photoNext"
+            type="button"
+            aria-label="Next photo">
+
+            &#10095;
+
+        </button>
+
+
+
+        <!-- PHOTO COUNTER -->
+
+        <div
+            class="photo-counter"
+            id="photoCounter">
+
+            1 / 3
+
+        </div>
 
 
     </div>
@@ -319,7 +387,9 @@
 
 
 
-        <!-- GIFT BOX -->
+        <!-- =========================================
+             GIFT BOX
+        ========================================== -->
 
         <div class="gift-box"
              onclick="openGift()">
@@ -409,9 +479,11 @@
 
 
 
-    <!-- JAVASCRIPT -->
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
 
-    <script src="script.js"></script>
+    <script src="script.js?v=20261004-2"></script>
 
 
 </body>
