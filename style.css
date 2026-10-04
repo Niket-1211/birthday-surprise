@@ -3333,3 +3333,858 @@ img {
     }
 
 }
+
+/* =========================================
+   MOBILE LAYOUT FIX
+   Keep sections vertically stacked
+========================================= */
+
+@media (max-width: 600px) {
+
+    /* Main birthday content must use full width */
+    #birthday {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Photo section stays full width */
+    .photo-section {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        clear: both !important;
+    }
+
+    /* Photo gallery stays inside the screen */
+    .photo-gallery {
+        display: grid !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        grid-template-columns: 1fr !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    /* Gift section MUST come below everything */
+    .gift-section {
+        display: block !important;
+        position: relative !important;
+
+        width: 100% !important;
+        max-width: 100% !important;
+
+        clear: both !important;
+
+        float: none !important;
+
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+
+        grid-column: 1 / -1 !important;
+        flex-basis: 100% !important;
+
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
+    /* Keep gift heading centered */
+    .gift-section h2,
+    .gift-section p {
+        text-align: center !important;
+    }
+
+    /* Keep gift box centered */
+    .gift-box {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+}
+
+
+/* =========================================================
+   FINAL FIXES - MOBILE PHOTO VIEWER + PAGE LAYOUT
+   Added to resolve:
+   1. Gift section appearing beside photo section
+   2. Photo viewer arrows not visible on mobile
+========================================================= */
+
+/* ---------------------------------------------------------
+   IMPORTANT: BODY MUST NOT BE A FLEX CONTAINER
+   The original body used display:flex, which made the
+   birthday and gift sections behave like side-by-side items.
+--------------------------------------------------------- */
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body {
+    display: block !important;
+    min-height: 100%;
+}
+
+/* Keep the individual screens centered using their own layout */
+.screen {
+    width: 100%;
+}
+
+/* Birthday content must occupy its own full-width section */
+#birthday {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    clear: both !important;
+}
+
+/* Keep all birthday content in a normal vertical flow */
+#birthday .container {
+    width: min(92%, 1100px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Photo section stays above the love letter and gift section */
+.photo-section {
+    display: block !important;
+    width: 100% !important;
+    clear: both !important;
+}
+
+/* Love letter stays below the photo gallery */
+.love-letter {
+    display: flex !important;
+    width: 100% !important;
+    clear: both !important;
+}
+
+/* Gift section is a separate full-width block */
+.gift-section {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    clear: both !important;
+    float: none !important;
+    position: relative !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* ---------------------------------------------------------
+   PHOTO VIEWER ARROWS
+--------------------------------------------------------- */
+
+.photo-viewer {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 999999 !important;
+    box-sizing: border-box !important;
+}
+
+.photo-viewer.show {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Keep the photo below the controls */
+#largePhoto {
+    position: relative !important;
+    z-index: 100000 !important;
+    max-width: 82vw !important;
+    max-height: 82vh !important;
+    object-fit: contain !important;
+}
+
+/* Close button */
+.photo-viewer .close-photo,
+#closePhotoButton {
+    position: absolute !important;
+    top: 18px !important;
+    right: 18px !important;
+    width: 48px !important;
+    height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    z-index: 100002 !important;
+    color: #ffffff !important;
+    background: rgba(0, 0, 0, 0.55) !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    border-radius: 50% !important;
+    font-size: 32px !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+}
+
+/* Previous and next buttons */
+.photo-viewer .photo-prev,
+.photo-viewer .photo-next,
+#photoPrev,
+#photoNext {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 52px !important;
+    height: 52px !important;
+    min-width: 52px !important;
+    min-height: 52px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    z-index: 100002 !important;
+    color: #ffffff !important;
+    background: rgba(0, 0, 0, 0.58) !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    border-radius: 50% !important;
+    font-size: 34px !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+/* Left arrow */
+.photo-viewer .photo-prev,
+#photoPrev {
+    left: 14px !important;
+    right: auto !important;
+}
+
+/* Right arrow */
+.photo-viewer .photo-next,
+#photoNext {
+    right: 14px !important;
+    left: auto !important;
+}
+
+/* Counter */
+.photo-viewer .photo-counter,
+#photoCounter {
+    position: absolute !important;
+    left: 50% !important;
+    bottom: 18px !important;
+    transform: translateX(-50%) !important;
+    z-index: 100002 !important;
+    color: #ffffff !important;
+    background: rgba(0, 0, 0, 0.55) !important;
+    border-radius: 20px !important;
+    padding: 6px 13px !important;
+    font-size: 13px !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+    pointer-events: none !important;
+}
+
+/* ---------------------------------------------------------
+   MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 600px) {
+
+    html,
+    body {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    body {
+        display: block !important;
+    }
+
+    #birthday {
+        display: block !important;
+        width: 100% !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    #birthday .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+    }
+
+    .photo-section {
+        display: block !important;
+        width: 100% !important;
+        margin-bottom: 0 !important;
+    }
+
+    .photo-gallery {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        width: min(100%, 340px) !important;
+        max-width: 340px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        gap: 15px !important;
+    }
+
+    .photo-card {
+        width: 100% !important;
+        max-width: 340px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .love-letter {
+        display: flex !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 55px 5px !important;
+        clear: both !important;
+    }
+
+    .gift-section {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: auto !important;
+        clear: both !important;
+        float: none !important;
+        margin: 0 !important;
+        padding: 90px 15px 110px !important;
+    }
+
+    /* Photo viewer */
+    .photo-viewer {
+        width: 100vw !important;
+        height: 100vh !important;
+        padding: 10px !important;
+        z-index: 999999 !important;
+    }
+
+    #largePhoto {
+        max-width: 78vw !important;
+        max-height: 76vh !important;
+        width: auto !important;
+        height: auto !important;
+        z-index: 100000 !important;
+    }
+
+    .photo-viewer .photo-prev,
+    #photoPrev {
+        left: 8px !important;
+        width: 46px !important;
+        height: 46px !important;
+        min-width: 46px !important;
+        min-height: 46px !important;
+        font-size: 29px !important;
+        z-index: 100002 !important;
+    }
+
+    .photo-viewer .photo-next,
+    #photoNext {
+        right: 8px !important;
+        width: 46px !important;
+        height: 46px !important;
+        min-width: 46px !important;
+        min-height: 46px !important;
+        font-size: 29px !important;
+        z-index: 100002 !important;
+    }
+
+    .photo-viewer .close-photo,
+    #closePhotoButton {
+        top: 12px !important;
+        right: 12px !important;
+        width: 44px !important;
+        height: 44px !important;
+        min-width: 44px !important;
+        min-height: 44px !important;
+        font-size: 29px !important;
+        z-index: 100003 !important;
+    }
+
+    .photo-viewer .photo-counter,
+    #photoCounter {
+        bottom: 15px !important;
+        font-size: 12px !important;
+        padding: 6px 11px !important;
+        z-index: 100003 !important;
+    }
+}
+
+/* Extra-small phones */
+@media (max-width: 380px) {
+
+    #largePhoto {
+        max-width: 74vw !important;
+        max-height: 73vh !important;
+    }
+
+    .photo-viewer .photo-prev,
+    #photoPrev,
+    .photo-viewer .photo-next,
+    #photoNext {
+        width: 43px !important;
+        height: 43px !important;
+        min-width: 43px !important;
+        min-height: 43px !important;
+        font-size: 27px !important;
+    }
+
+    .photo-viewer .photo-prev,
+    #photoPrev {
+        left: 5px !important;
+    }
+
+    .photo-viewer .photo-next,
+    #photoNext {
+        right: 5px !important;
+    }
+}
+/* =========================================================
+   FINAL MOBILE + PAGE LAYOUT FIX
+   ========================================================= */
+
+/* ---------- BASIC PAGE FLOW ---------- */
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body {
+    display: block !important;
+    min-height: 100vh;
+}
+
+
+/* ---------- KEEP MAIN SECTIONS VERTICAL ---------- */
+
+#welcome,
+#birthday,
+.gift-section {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+#welcome {
+    min-height: 100vh;
+}
+
+#birthday {
+    min-height: 100vh;
+}
+
+.gift-section {
+    width: 100%;
+    min-height: 100vh;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box;
+    clear: both;
+}
+
+
+/* ---------- BIRTHDAY CONTENT ---------- */
+
+#birthday .container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+
+/* ---------- PHOTO SECTION ---------- */
+
+.photo-section {
+    width: 100%;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+.photo-gallery {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   FULL-SCREEN PHOTO VIEWER
+   ========================================================= */
+
+#photoViewer,
+.photo-viewer {
+    position: fixed !important;
+    inset: 0 !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 20px !important;
+    box-sizing: border-box !important;
+
+    background: rgba(5, 0, 10, 0.94);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    z-index: 200000 !important;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+
+/* Open state */
+
+#photoViewer.show,
+#photoViewer.active,
+.photo-viewer.show,
+.photo-viewer.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+
+/* ---------- LARGE PHOTO ---------- */
+
+#largePhoto {
+    display: block !important;
+
+    max-width: 88vw !important;
+    max-height: 82vh !important;
+
+    width: auto !important;
+    height: auto !important;
+
+    object-fit: contain !important;
+
+    border-radius: 18px;
+
+    position: relative;
+    z-index: 200001 !important;
+}
+
+
+/* =========================================================
+   PHOTO VIEWER BUTTONS
+   ========================================================= */
+
+/* CLOSE */
+
+#photoViewer .close-photo {
+    position: absolute !important;
+
+    top: 20px !important;
+    right: 25px !important;
+
+    width: 48px !important;
+    height: 48px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border-radius: 50% !important;
+
+    background: rgba(255, 255, 255, 0.12) !important;
+    color: white !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+
+    font-size: 32px !important;
+    line-height: 1 !important;
+
+    cursor: pointer;
+
+    z-index: 200005 !important;
+}
+
+
+/* PREVIOUS + NEXT */
+
+#photoViewer .photo-prev,
+#photoViewer .photo-next,
+#photoPrev,
+#photoNext {
+    position: absolute !important;
+
+    top: 50% !important;
+
+    width: 55px !important;
+    height: 55px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    transform: translateY(-50%) !important;
+
+    border-radius: 50% !important;
+
+    background: rgba(255, 255, 255, 0.16) !important;
+    color: white !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+
+    font-size: 30px !important;
+    line-height: 1 !important;
+
+    cursor: pointer;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+
+    z-index: 200005 !important;
+
+    box-shadow:
+        0 5px 25px rgba(0, 0, 0, 0.35),
+        0 0 20px rgba(255, 80, 160, 0.2);
+
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+
+/* Previous position */
+
+#photoViewer .photo-prev,
+#photoPrev {
+    left: 20px !important;
+}
+
+
+/* Next position */
+
+#photoViewer .photo-next,
+#photoNext {
+    right: 20px !important;
+}
+
+
+/* Prevent the global button shine effect from covering
+   the photo navigation buttons */
+
+#photoViewer .photo-prev::before,
+#photoViewer .photo-next::before,
+#photoViewer .close-photo::before {
+    content: none !important;
+}
+
+
+/* Hover */
+
+#photoViewer .photo-prev:hover,
+#photoViewer .photo-next:hover,
+#photoViewer .close-photo:hover {
+    transform: translateY(-50%) scale(1.08) !important;
+    background: rgba(255, 80, 160, 0.30) !important;
+}
+
+
+/* Close button needs normal hover transform */
+
+#photoViewer .close-photo:hover {
+    transform: scale(1.08) !important;
+}
+
+
+/* ---------- PHOTO COUNTER ---------- */
+
+#photoViewer .photo-counter {
+    position: absolute !important;
+
+    bottom: 20px !important;
+    left: 50% !important;
+
+    transform: translateX(-50%) !important;
+
+    padding: 7px 14px !important;
+
+    border-radius: 20px;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    color: white;
+
+    font-size: 14px;
+
+    z-index: 200005 !important;
+}
+
+
+/* =========================================================
+   MOBILE PHOTO VIEWER
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    #photoViewer,
+    .photo-viewer {
+        padding: 12px !important;
+    }
+
+    #largePhoto {
+        max-width: 82vw !important;
+        max-height: 76vh !important;
+        border-radius: 14px;
+    }
+
+    #photoViewer .photo-prev,
+    #photoViewer .photo-next,
+    #photoPrev,
+    #photoNext {
+
+        width: 46px !important;
+        height: 46px !important;
+
+        font-size: 25px !important;
+
+        background: rgba(255, 255, 255, 0.20) !important;
+
+        z-index: 200005 !important;
+    }
+
+    #photoViewer .photo-prev,
+    #photoPrev {
+        left: 7px !important;
+    }
+
+    #photoViewer .photo-next,
+    #photoNext {
+        right: 7px !important;
+    }
+
+    #photoViewer .close-photo {
+        top: 12px !important;
+        right: 12px !important;
+
+        width: 42px !important;
+        height: 42px !important;
+
+        font-size: 28px !important;
+    }
+
+    #photoViewer .photo-counter {
+        bottom: 12px !important;
+        font-size: 13px !important;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    #photoViewer .photo-prev,
+    #photoViewer .photo-next,
+    #photoPrev,
+    #photoNext {
+        width: 42px !important;
+        height: 42px !important;
+        font-size: 22px !important;
+    }
+
+    #photoViewer .photo-prev,
+    #photoPrev {
+        left: 5px !important;
+    }
+
+    #photoViewer .photo-next,
+    #photoNext {
+        right: 5px !important;
+    }
+
+    #largePhoto {
+        max-width: 80vw !important;
+        max-height: 72vh !important;
+    }
+}
+
+
+/* =========================================================
+   MOBILE PAGE FLOW
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        display: block !important;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    #welcome,
+    #birthday,
+    .gift-section {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    #birthday .container {
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+        box-sizing: border-box;
+    }
+
+    .love-letter {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .gift-section {
+        position: relative;
+        clear: both;
+        width: 100%;
+        min-height: 100vh;
+        padding-left: 15px;
+        padding-right: 15px;
+        box-sizing: border-box;
+    }
+
+}
